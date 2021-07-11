@@ -21,12 +21,12 @@ function App() {
             <Switch>
                 <Route component={LoginPage} path="/login"/>
                 <Route component={RegisterPage} path="/register"/>
-
-                <ProtectedLayout component={DetailTodoPage} path="/todo/:id"/>
-                <Route component={ListTodoPage} exact path="/"/>
+                
                 <ProtectedLayout component={AddTodoPage} path="/todo/add"/>
-                <ProtectedLayout component={UpdateTodoPage} path="/todo/:id/update"/>
+                <Route component={UpdateTodoPage} path="/todo/:id/update"/>
                 <ProtectedLayout component={DeleteTodoPage} path="/todo/:id/delete"/>
+                <Route component={DetailTodoPage} path="/todo/:id"/>
+                <Route component={ListTodoPage} exact path="/"/>
                 <ProtectedLayout component={NotFoundPage} />
             </Switch>
           </Layout>

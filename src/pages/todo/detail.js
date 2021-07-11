@@ -1,9 +1,32 @@
-import React from 'react';
+import { useEffect } from 'react';
+import { connect } from 'react-redux';
+import useRouter from 'use-react-router';
 
-const Detail = () => (
-  <div>
-    Detail Todo Page
-  </div>
-);
+import { getTodoById } from '../../store/action/todo';
 
-export default Detail;
+const Detail = (props) => {
+
+  const { todo, getTodoDetailById } = props;
+  const { match, history } = useRouter();
+
+  useEffect(() => { // Component Didmount life cycle
+    getTodoDetailById(match.params.id);
+  }, [getTodoDetailById, match.params.id])
+
+  return (
+    <div>
+      {JSON.stringify(props.todo)}
+      Detail Todo Page
+    </div>
+  )
+}
+
+const mapStateToProps = (state) => ({
+  todo: state.todoReducer.todo
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getTodoDetailById: (id) => dispatch(getTodoById(id))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

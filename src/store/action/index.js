@@ -1,5 +1,7 @@
 import todo from './todo';
 
-export default {
+const action = {
   todo
 };
+
+export default action;

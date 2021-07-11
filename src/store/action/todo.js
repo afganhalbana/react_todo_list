@@ -25,35 +25,35 @@ export const getTodo = () => {
         description: 'Belajar Fullstack untuk tujuan 4',
       },
     ],
-  }
-}
+  };
+};
 
 export const getTodoById = (id) => {
   return {
-    action: GET_TODO_BY_ID,
+    type: GET_TODO_BY_ID,
     payload: id,
   };
 };
 
 export const addTodo = (payload) => {
   return {
-    action: ADD_TODO,
+    type: ADD_TODO,
     payload,
   };
 };
 
 export const updateTodo = (payload) => {
   return {
-    action: UPDATE_TODO,
+    type: UPDATE_TODO,
     payload,
   };
 };
 
-export default {};
-
 export const deleteTodo = (id) => {
   return {
-    action: DELETE_TODO,
+    type: DELETE_TODO,
     payload: id,
-  }
-}
+  };
+};
+
+export default { getTodo, getTodoById, addTodo, updateTodo, deleteTodo};

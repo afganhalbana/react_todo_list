@@ -13,20 +13,16 @@ export const Layout = ({children}) => (
         <Navbar.Toggle/>
         <Navbar.Collapse className="justify-content-end">
           <Nav>
-            <Nav.Link>
-              <Link
-               to={{pathname:'/login'}}
-               className="text-decoration-none text-reset">
-                 Login
-              </Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link
-               to={{pathname:'/register'}}
-               className="text-decoration-none text-reset">
-                Register
-              </Link>
-            </Nav.Link>
+            <Link
+              to={{pathname:'/login'}}
+              className="text-decoration-none text-reset">
+                Login
+            </Link>
+            <Link
+              to={{pathname:'/register'}}
+              className="text-decoration-none text-reset">
+              Register
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

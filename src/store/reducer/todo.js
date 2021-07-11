@@ -17,7 +17,7 @@ const todoReducer = (state = initialState, { type, payload }) => {
         todos: payload,
       };
     case GET_TODO_BY_ID:
-      const findTodo = state.todos.find(todo => todo.id === payload.id);
+      const findTodo = state.todos.find(todo => todo.id.toString() === payload.toString());
       return {
         ...state,
         todo: findTodo,
@@ -32,8 +32,8 @@ const todoReducer = (state = initialState, { type, payload }) => {
       };
     case UPDATE_TODO:
       const todos = state.todos;
-      const indexTodo = todos.findIndex(todo => todo.id === payload.id);
-      todos[indexTodo] = payload
+      const indexTodo = todos.findIndex(todo => todo.id.toString() === payload.id.toString());
+      todos[indexTodo] = payload;
       return {
         ...state,
         todos,
