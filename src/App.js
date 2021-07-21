@@ -12,6 +12,7 @@ import ProtectedLayout from './components/protectedLayout'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/layout';
+import ProductList from './pages/product'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Switch>
                 <Route component={LoginPage} path="/login"/>
                 <Route component={RegisterPage} path="/register"/>
-                
+                <Route component={ProductList} path="/shopping"/>
                 <ProtectedLayout component={AddTodoPage} path="/todo/add"/>
                 <Route component={UpdateTodoPage} path="/todo/:id/update"/>
                 <ProtectedLayout component={DeleteTodoPage} path="/todo/:id/delete"/>
