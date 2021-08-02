@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import useRouter from 'use-react-router';
 
-import { updateTodo, getTodoById } from '../../store/action/todo';
+import { updateTodo as updateTodoAction, getTodoById } from '../../store/action/todo';
 
 const Update = (props) => {
   const { todo, getTodoDetailById, updateTodo } = props;
-  const { match, history } = useRouter();
+  const { match } = useRouter();
   const [selectedTodo, setSelectedTodo] = useState({
     id: 0,
     name: '',
@@ -21,12 +22,12 @@ const Update = (props) => {
     if (todo != null) {
       setSelectedTodo(todo);
     }
-  },[todo]);
+  }, [todo]);
 
   const onChangeInput = (type) => (e) => {
     setSelectedTodo({
       ...selectedTodo,
-      [type]: e.currentTarget.value
+      [type]: e.currentTarget.value,
     });
   };
 
@@ -47,12 +48,18 @@ const Update = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateTodo: (todo) => dispatch(updateTodo(todo)),
+  updateTodo: (todo) => dispatch(updateTodoAction(todo)),
   getTodoDetailById: (id) => dispatch(getTodoById(id)),
 });
 
 const mapStateToProps = (state) => ({
-  todo: state.todoReducer.todo
+  todo: state.todoReducer.todo,
 });
+
+Update.propTypes = {
+  todo: PropTypes.objectOf(PropTypes.object()).isRequired,
+  getTodoDetailById: PropTypes.func.isRequired,
+  updateTodo: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Update);

@@ -28,7 +28,7 @@ function App() {
                 <ProtectedLayout component={DeleteTodoPage} path="/todo/:id/delete"/>
                 <Route component={DetailTodoPage} path="/todo/:id"/>
                 <Route component={ListTodoPage} exact path="/"/>
-                <ProtectedLayout component={NotFoundPage} />
+                <Route component={NotFoundPage} />
             </Switch>
           </Layout>
         </Router>
